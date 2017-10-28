@@ -1,0 +1,32 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.main {
+  text-align: center;
+}
+
+.center {
+  margin: auto;
+}
+
+#map {
+        width: 700px;
+        height: 450px;
+        background-color: black;
+      }
+
+.main {
+}
+
+.bottom {
+  padding-top: 10px;
+}
+
+.ping {
+  max-width: 800px;
+}
