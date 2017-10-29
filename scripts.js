@@ -1,4 +1,4 @@
-/Getting
+//Getting
 $(function() {
 	//when submit is clicked, gather the data on the page:
 	$(".submit").on("click", function() {
