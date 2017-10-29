@@ -13,12 +13,22 @@
 
     <!-- Custom styles for this template -->
     <link href="styles.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Raleway|Ubuntu|Oswald" rel="stylesheet">
+
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+
   </head>
 
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Ground Zero</a>
+      <a class="navbar-brand" href="#">GROUND ZERO</a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Sign Up <span class="sr-only">(current)</span></a>
@@ -33,25 +43,62 @@
 
     </nav>
 
+    <div class = "banner">
+      <div class = "img">
+        <div class = "text">
+          CROWD SOURCED EMERGENCY RELIEF
+
+        </div>
+      </div>
+    </div>
+
     <div class = "container main">
+
       <div class ="row">
+        <div class = "col-sm-12 col-lg-4 center">
+          <p>ping info info about ping please create ping</p>
+          <a class="btn btn-danger btn-lg xl" href="submit.html" role="button">Create a ping</a>
+        </div>
+
         <div class = "col-sm-12 col-lg-8 center main">
           <div id = "map"></div>
           <div class = "row">
             <div class = "col-sm-6 col-lg-6 center bottom">
-              <button type="button" class="btn btn-info">Filters</button>
+              <button type="button" class="btn btn-info round">Filters</button>
             </div>
             <div class = "col-sm-6 col-lg-6 center bottom">
-              <a class="btn btn-warning" href="listings.html" role="button">Show all listings</a>
+              <a class="btn btn-warning round" href="listings.html" role="button">Listings</a>
             </div>
           </div>
         </div>
-        <div class = "col-sm-12 col-lg-4 center">
-          <p>ping info info about ping please create ping</p>
-          <a class="btn btn-danger btn-lg" href="submit.html" role="button">Create a ping</a>
-        </div>
       </div>
     </div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB-l6MJLNO4Iuev0W_MDsGOY4C0ndtGF8&callback=initMap">
+    </script>
+
+    <div class = "footer">
+
+      <div class = "container">
+
+      </div>
+
+    </div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

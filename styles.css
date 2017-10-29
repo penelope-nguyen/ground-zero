@@ -1,5 +1,6 @@
 body {
-  padding-top: 5rem;
+  font-family: Roboto;
+  padding-top: 4rem;
 }
 .starter-template {
   padding: 3rem 1.5rem;
@@ -8,6 +9,7 @@ body {
 
 .main {
   text-align: center;
+  padding-top: 10px;
 }
 
 .center {
@@ -23,6 +25,7 @@ body {
       }
 
 .main {
+  padding: 20px;
 }
 
 .bottom {
@@ -54,4 +57,52 @@ body {
 
 .card-text {
   font-size: 12px;
+}
+
+
+.navbar-brand {
+  font-family: 'Oswald';
+  font-size: 30px;
+}
+
+.footer {
+  background-color: #2E2E2E;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+}
+
+.round {
+  border-radius: 30px;
+  font-size: 22px;
+}
+
+.xl {
+  font-size: 34px;
+  border-radius: 32px;
+}
+
+.img {
+  background-image: url("assets/img/banner.jpg");
+  background-size: cover; /* or contain depending on what you want */
+  background-position: center center;
+  height: 500px;
+  background-repeat: no-repeat;
+  text-align:center;
+  margin:auto;
+  padding:0;
+}
+
+.text {
+  padding-top: 10rem;
+  color: white;
+  font-family: Roboto;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+.mainpage {
+  padding-top: 10px;
+
 }
