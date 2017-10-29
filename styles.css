@@ -9,7 +9,6 @@ body {
 
 .main {
   text-align: center;
-  padding-top: 10px;
 }
 
 .center {
@@ -26,6 +25,14 @@ body {
 
 .main {
   padding: 20px;
+}
+
+#headline {
+  margin-top: 4rem;
+}
+
+.top {
+  top: 4rem;
 }
 
 .bottom {
@@ -83,6 +90,9 @@ body {
   border-radius: 32px;
 }
 
+h2 {
+  font-family: Oswald;
+}
 .img {
   background: linear-gradient(
                      rgba(20,20,20, .7),
@@ -109,11 +119,6 @@ body {
   padding-top: 10px;
 
 }
-
-#left {
-}
-
 .btn {
   font-family: Roboto:300;
-
 }
