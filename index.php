@@ -14,7 +14,7 @@
     <!-- Custom styles for this template -->
     <link href="styles.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Raleway|Ubuntu|Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Ubuntu|Oswald" rel="stylesheet">
 
     <style>
        #map {
@@ -47,17 +47,16 @@
       <div class = "img">
         <div class = "text">
           CROWD SOURCED EMERGENCY RELIEF
-
         </div>
       </div>
     </div>
 
-    <div class = "container main">
+    <div class = "main">
 
       <div class ="row">
         <div class = "col-sm-12 col-lg-4 center">
           <p>ping info info about ping please create ping</p>
-          <a class="btn btn-danger btn-lg xl" href="submit.html" role="button">Create a ping</a>
+          <a class="btn btn-danger btn-lg xl" href="submit.html" role="button">Send flare</a>
         </div>
 
         <div class = "col-sm-12 col-lg-8 center main">

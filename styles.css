@@ -1,5 +1,5 @@
 body {
-  font-family: Roboto;
+  font-family: Roboto:300;
   padding-top: 4rem;
 }
 .starter-template {
@@ -84,10 +84,13 @@ body {
 }
 
 .img {
-  background-image: url("assets/img/banner.jpg");
+  background: linear-gradient(
+                     rgba(20,20,20, .7),
+                     rgba(20,20,20, .7)),
+                     url("assets/img/banner.jpg");
   background-size: cover; /* or contain depending on what you want */
   background-position: center center;
-  height: 500px;
+  height: 200px;
   background-repeat: no-repeat;
   text-align:center;
   margin:auto;
@@ -95,14 +98,22 @@ body {
 }
 
 .text {
-  padding-top: 10rem;
+  padding-top: 3rem;
   color: white;
-  font-family: Roboto;
+  font-family: Oswald;
   vertical-align: middle;
-  font-size: 30px;
+  font-size: 50px;
 }
 
 .mainpage {
   padding-top: 10px;
+
+}
+
+#left {
+}
+
+.btn {
+  font-family: Roboto:300;
 
 }
