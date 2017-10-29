@@ -27,7 +27,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top roboto">
       <a class="navbar-brand" href="#">GROUND ZERO</a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
@@ -55,8 +55,8 @@
       <div class ="row">
         <div class = "col-sm-12 col-lg-4 center">
           <h2>NEED HELP?</h2>
-          <p>ping info info about ping please create ping</p>
-          <a class="btn btn-danger btn-lg xl" href="submit.html" role="button">Send flare</a>
+          <p class = "roboto">Send a flare describing your location and need to signal for help.</p>
+          <a class="btn btn-danger btn-lg xl roboto" href="submit.html" role="button">Send flare</a>
         </div>
 
         <div class = "col-sm-12 col-lg-8 center main">
@@ -64,10 +64,10 @@
           <div id = "map"></div>
           <div class = "row">
             <div class = "col-sm-6 col-lg-6 center bottom">
-              <button type="button" class="btn btn-info round">Filters</button>
+              <button type="button" class="btn btn-info round roboto">Filters</button>
             </div>
             <div class = "col-sm-6 col-lg-6 center bottom">
-              <a class="btn btn-warning round" href="listings.html" role="button">Listings</a>
+              <a id = "btn" class="btn btn-warning round roboto" href="listings.html" role="button">Listings</a>
             </div>
           </div>
         </div>
@@ -75,14 +75,79 @@
     </div>
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        //LOAD THESE VARIABLES FROM THE DATABASE
+        var ttle = "Hackers in need of morale";
+        var desc = "Need sleep please bring beds and eye masks<br>October 29 @ 10:25AM";
+        var prty = "Low";
+        var address = "Omni Hotel Downtown Austin, Texas"
+        var loc = {lat: 30.2689866, lng: -97.7425237}; //needs to be automated
+        //^^^^^^^^^
+        var geocoder = new google.maps.Geocoder();
+        //on address submit:
+
+        geocoder.geocode({'address': address}, function(results, status) {
+
+          if (status === 'OK') {
+            loc = results[0].geometry.location;
+          }
+          else {
+            alert('invalid address');
+          }
+        });
+
+        //contentString is the content of the info popup being made!
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">' +
+            ttle +
+            '</h1>'+
+            '<div id="bodyContent">'+
+            '<p>' +
+            desc +
+            '</p>'+
+            '<p>' +
+            address +
+            '</p>'+
+            '<p>'+
+            prty +
+            '</p>'+
+            '</div>'+
+            '</div>';
+        //
+        //SELECTS the proper pin color based on priority
+        if(prty === "Low") {
+          prty_icon = 'Google Maps Markers/blue_MarkerL.png'
+        }
+        else if(prty === "Medium") {
+          prty_icon = 'Google Maps Markers/yellow_MarkerM.png'
+        }
+        else if(prty === "High") {
+          prty_icon = 'Google Maps Markers/orange_MarkerH.png'
+        }
+        else if(prty === "Emergency") {
+          prty_icon ='Google Maps Markers/red_MarkerE.png'
+        }
+
+        //LOADS the location of the new marker
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
-          center: uluru
+          center: loc
         });
+        //CREATES and PLACES a new marker
         var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
+          position: loc,
+          map: map,
+          icon: prty_icon
+        });
+        //CREATES the marker popup info
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        //ADDS the click event TO markers
+        marker.addListener('click', function() {
+          //LOADS the marker pop up window
+          infowindow.open(map, marker);
         });
       }
     </script>

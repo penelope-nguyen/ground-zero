@@ -1,12 +1,7 @@
-body {
-  font-family: Roboto:300;
-  padding-top: 4rem;
+.roboto {
+  font-family: Roboto, sans-serif!important;
+  font-weight: 300
 }
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
-
 .main {
   text-align: center;
 }
@@ -31,10 +26,6 @@ body {
   margin-top: 4rem;
 }
 
-.top {
-  top: 4rem;
-}
-
 .bottom {
   padding-top: 10px;
 }
@@ -47,7 +38,7 @@ body {
   background: #0099f7; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0099f7, #f11712); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #0099f7, #f11712); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  position: absolute;
 }
 
 .card {
@@ -60,6 +51,7 @@ body {
 
 .sortby {
   padding-bottom: 20px;
+  padding-top: 30px;
 }
 
 .card-text {
@@ -115,10 +107,18 @@ h2 {
   font-size: 50px;
 }
 
+.banner {
+  padding-top: 4.3rem;
+}
+
 .mainpage {
   padding-top: 10px;
-
+  margin-top: 4rem;
 }
 .btn {
   font-family: Roboto:300;
+}
+
+.btn-warning {
+  color: white;
 }
