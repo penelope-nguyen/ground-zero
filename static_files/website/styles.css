@@ -1,0 +1,45 @@
+select {
+	display: inline;
+	background-color: #FFFFFF;
+}
+
+nav {
+            height: 70px;
+    }
+
+#id_longitude { 
+	display: none;
+ }
+
+ #id_latitude { 
+	display: none;
+ }
+
+label[for="id_longitude"]
+{
+    display:none;
+}
+
+label[for="id_latitude"]
+{
+    display:none;
+}
+
+.title { 
+	font-size: 20px;
+	color: #b71c1c;
+ }
+
+ .main {
+ 	margin-top: 30px;
+ 	min-height: 400px;
+ }
+
+ .submit {
+ 	margin-top: 20px; 	
+ }
+
+ #map { 
+ 	height: 370px;
+  }
+

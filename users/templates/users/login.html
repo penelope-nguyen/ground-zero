@@ -1,0 +1,24 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+	<div class="container main" style="margin-bottom: 150px">
+		<div class="row">
+
+    	<div class="col s12 m8 l6 offset-l3 center-align">
+	    	<h2>Log In</h2>
+			{% if form.errors %}
+			<p><b>Your username and password didn't match. Please try again.</b></p>
+			{% endif %}
+
+			<form method="post" action="{% url 'users:login' %}">
+			{% csrf_token %}
+			{{ form.as_p }}
+
+			<button class = "black btn waves-effect waves-light submit" name="submit">log in</button>
+
+			<input type="hidden" name="next" value="{% url 'website:index' %}" />
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}

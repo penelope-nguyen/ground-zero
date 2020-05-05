@@ -1,0 +1,1 @@
+web: gunicorn groundzero.wsgi --log-file -

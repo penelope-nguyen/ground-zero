@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <!--Import materialize.css-->
+    {% load staticfiles %}
+    {% load static %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/bin/materialize.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static '/website/styles.css' %}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  </head>
+  
+  <body>
+    
+    <nav>
+    <div class="nav-wrapper grey darken-4">
+     <a href="{% url 'website:index' %}" class="brand-logo">GROUND ZERO</a>
+    
+     <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% if user.is_authenticated %}
+            <li> Hello, {{ user.username }}.</li>
+            <li><a href="{% url 'website:myListings' %}">My Flares</a><li>
+             <li><a href="{% url 'users:logout' %}">Log Out</a><li>
+        {% else %}
+            <li><a href="{% url 'users:login' %}">Log In</a></li>
+            <li><a href="{% url 'users:register' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+    <br>
+    {% load static %}
+
+    {% block content %}
+    {% endblock content %}
+
+    <!--Import jQuery before materialize.js-->
+    {% block footer %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'materialize/bin/materialize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'website/js/scripts.js' %}"></script>
+    {% endblock %}
+        
+    <footer class="page-footer red darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">About</h5>
+                <p class="grey-text text-lighten-4">Ground Zero is a student project created by Kevin Eastin and Penelope Nguyen. You can help maintain it and help it grow through donations or sponsorships.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Our Sponsors</a></li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container gray lighten-4">
+            © 2017 Ground Zero
+            </div>
+          </div>
+        </div>
+    </footer>
+  </body>
+
+</html>

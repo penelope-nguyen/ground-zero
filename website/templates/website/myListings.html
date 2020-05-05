@@ -1,0 +1,24 @@
+{% extends 'website/base.html'  %}
+
+{% block content %}
+    <div class = "container main">
+
+    <h3>MY LISTINGS</h3>
+
+    {% for flare in flares %}
+            <div class="card-panel gray darken-3">
+                <p class ="title">{{flare.title}}</p>
+                <p><b>DATE</b> {{flare.date_added | date:'M d, Y H:i'}} | <b> PRIORITY</b> {{flare.priority}}</p>
+                <p><b>ADDRESS</b>{{flare.location}}</p>
+                <p> {{flare.description}}</p>
+                <p><b>Tags:</b> {{flare.tags}} </p>
+                <form method="post" action="{% url 'website:listings' %}">
+                <button class = "black btn waves-effect waves-light" value = '{{flare.id}}' name = id >Delete<i class="material-icons right">delete</i></button>
+                {% csrf_token %}
+                </form>
+
+         </div>
+    {% endfor %}
+    </div>
+    
+{% endblock content %}

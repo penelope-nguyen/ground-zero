@@ -1,0 +1,134 @@
+{% extends 'website/base.html'  %}
+
+{% block content %}
+	
+	{% if found %}
+	<div id = "map" class="filtered"></div>
+	{% endif %}
+	<div class = "container main">
+
+	<h3>LISTINGS</h3>
+	
+	{% if found %}
+		{% for flare in flares %}
+			<div class="card-panel gray darken-3">
+				<p class ="title">{{flare.title}}</p>
+				<p><b>DATE</b> {{flare.date_added | date:'M d, Y H:i'}} | <b> PRIORITY</b> {{flare.priority}}</p>
+				<p><b>ADDRESS</b>{{flare.location}}</p>
+				<p> {{flare.description}}</p>
+				<p><b>Tags:</b> {{flare.tags}} </p>
+				<form method="post" action="{% url 'website:listings' %}">
+				<button class = "black btn waves-effect waves-light" value = '{{flare.id}}' name = id >Delete<i class="material-icons right">delete</i></button>
+				{% csrf_token %}
+				</form>
+
+			 </div>
+		{% endfor %}
+
+	{% else %}
+			<p>No listings were found. Please try again with a different tag.</p>
+	{% endif %}
+
+	</div>
+
+	<script>
+      //initMap is the function that puts the google map on the page, AND loops through the database to set all the markers.
+      function initMap() {
+        //LOADS the location of the new marker
+        var initloc = {lat: 30.2689866, lng: -95.7425237};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: initloc
+        });
+
+        {% for flare in flares %}
+
+          //LOAD THESE VARIABLES FROM THE DATABASE
+          //plug in the dynamic code here: either django or php or whatever, to load all the variables:
+          var ttle = "{{flare.title}}";
+          var desc = "{{flare.description}}";
+          var prty = "{{flare.priority}}"; //priority: Needs to be converted to a number. OR the database needs to be updated to be a string
+          var address = "{{flare.location}}";
+          var longitude = {{flare.longitude}};
+          var latitude = {{flare.latitude}};
+          var loc = {lat: latitude, lng: longitude};//TODO: SEE IF THIS LINE WORKS
+          var tags = "{{flare.tags}}";  
+           //^^^^^^^^^
+          //The geocoder is just a tool that creates longitude/latidude given a string address.
+
+
+          //contentString is the content seen in the popup info panel when a marker is clicked.
+          
+          //
+          //SELECTS the proper pin color based on priority
+          //for this to work for django, we need to put the markers folder into the project!
+          {% load static %}
+          var prty_icon;
+          console.log(prty);
+          if(prty == 1) {
+             console.log("it blue!")
+            prty_icon = '{% static "website/markers/blue_MarkerL.png" %}'
+            console.log("it blue!");
+          }
+          else if(prty == 2) {
+            prty_icon = '{% static "website/markers/yellow_MarkerM.png" %}'
+          }
+          else if(prty == 3) {
+            prty_icon = '{% static "website/markers/orange_MarkerH.png" %}'
+          }
+          else if(prty == 4) {
+            prty_icon = '{% static "website/markers/red_MarkerE.png" %}'
+          }
+
+
+          //TODO:: replace the locations stuff with the new database variable pulls
+          //CREATES and PLACES a new marker
+          var marker = new google.maps.Marker({
+            position: loc,
+            map: map,
+            icon: prty_icon,
+            title: '{{flare.title}}'
+
+          });
+          var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h3 id="firstHeading" class="firstHeading">' +
+              ttle +
+              '</h3>'+
+              '<div id="bodyContent">'+
+              '<p>' +
+              desc +
+              '</p>'+
+              '<p>' +
+              address +
+              '</p>'+
+              '<p>'+
+              prty +
+              '</p>'+
+              '<p>' +
+              tags +
+              '</p>'+
+              '</div>'+
+              '</div>';
+          //set the content variable of the marker created to be contentString
+          marker.content = contentString;
+          //CREATES the marker popup info window
+          var infoWindow = new google.maps.InfoWindow();
+          //adds the click handler to the marker, and sets it up to only open the content for the marker clicked
+          google.maps.event.addListener(marker, 'click', function () {
+            infoWindow.setContent(this.content);
+            infoWindow.open(this.getMap(), this);
+          });
+          
+        {% endfor %}
+
+      }
+      
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB-l6MJLNO4Iuev0W_MDsGOY4C0ndtGF8&callback=initMap">
+    </script>
+
+{% endblock content %}

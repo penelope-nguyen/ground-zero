@@ -1,0 +1,19 @@
+{% extends 'website/base.html'  %}
+
+{% block content %}
+
+<div class = "container main">
+ <h3>Create a Flare</h3>
+ <p>Please provide as much information as possible. Your flare will immediately be placed on our map and listing page.</p>
+ 	<form action="{% url 'website:create' %}" method='post'>
+ 		{% csrf_token %}
+ 		{{ form.as_p }}
+ 		 <button class="btn waves-effect red darken-3 waves-light submit" id="create_btn" type="submit" name="action">Submit
+		 </button>
+
+ 	</form>
+</div>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB-l6MJLNO4Iuev0W_MDsGOY4C0ndtGF8">
+    </script>
+{% endblock content %}
